@@ -127,6 +127,12 @@ body{
 </style>
 </head>
 
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/signage/service-worker.js');
+}
+</script>
+
 <body>
 
 <div class="container">
