@@ -1,0 +1,8 @@
+{
+  "name": "受付サイネージ",
+  "short_name": "Signage",
+  "start_url": "/signage/",
+  "display": "fullscreen",
+  "background_color": "#000000",
+  "theme_color": "#000000"
+}
