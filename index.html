@@ -20,12 +20,11 @@ body{
 }
 
 .weather{
-    margin-top:220px;
+    margin-top:180px;
 
     display:flex;
-    gap:20px;
     justify-content:center;
-    align-items:center;
+    gap:25px;
 
     z-index:100;
 }
@@ -34,17 +33,13 @@ body{
     background:rgba(255,255,255,0.75);
     backdrop-filter:blur(5px);
 
-    padding:15px 25px;
+    width:130px;
+    padding:12px 15px;
     border-radius:20px;
 
     color:#003366;
     text-align:center;
-
-    min-width:120px;
-
-    font-size:1.5vw;
     font-weight:600;
-    line-height:1.5;
 }
 
 .container{
@@ -55,7 +50,7 @@ body{
 
 /* 上部 */
 .header{
-    flex:4;
+    flex:3;
     background-image:url("background.png");
     background-size:cover;
     background-position:center;
@@ -69,18 +64,21 @@ body{
 .welcome{
     font-size:8vw;
     color:#003366;
-    margin-top:180px;
-    margin-bottom:20px;
+
+    margin-top:50px;
+    margin-bottom:0px;
+
     font-weight:500;
-    z-index:101;
 }
 
 /* タイトル */
 .title{
     font-size:8vw;
     color:#003366;
-    margin-top:20px;
-    margin-bottom:80px;
+
+    margin-top:10px;
+    margin-bottom:40px;
+
     position:relative;
 }
 
@@ -137,7 +135,7 @@ body{
 
 /* 中央動画 */
 .video-area{
-    flex:2;
+    flex:3;
     background:black;
 }
 
@@ -261,15 +259,21 @@ async function loadWeather(){
 
     for(let i=0;i<3;i++){
         html += `
-    <div class="weather-day">
-        <div>${labels[i]}</div>
-        <div style="font-size:2.5vw;">${icon(data.daily.weather_code[i])}</div>
-        <div>
-            ${Math.round(data.daily.temperature_2m_max[i])}℃
-            /
-            ${Math.round(data.daily.temperature_2m_min[i])}℃
-        </div>
+<div class="weather-day">
+    <div style="font-size:1.6vw;font-weight:bold;">
+        ${labels[i]}
     </div>
+
+    <div style="font-size:3vw;line-height:1.2;">
+        ${icon(data.daily.weather_code[i])}
+    </div>
+
+    <div style="font-size:1.4vw;font-weight:bold;">
+        ${Math.round(data.daily.temperature_2m_max[i])}℃
+        /
+        ${Math.round(data.daily.temperature_2m_min[i])}℃
+    </div>
+</div>
 `;
     }
 
