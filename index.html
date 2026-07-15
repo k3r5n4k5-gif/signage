@@ -20,27 +20,33 @@ body{
 }
 
 .weather{
-    position:absolute;
-    top:40px;
-    right:40px;
+    margin-top:220px;
 
-    background:rgba(255,255,255,0.75);
-    backdrop-filter:blur(5px);
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    align-items:center;
 
-    padding:20px;
-    border-radius:20px;
-
-    color:#003366;
-    font-size:2vw;
-    text-align:center;
     z-index:100;
-    min-width:220px;
 }
 
 .weather-day{
-    margin:10px 0;
+    background:rgba(255,255,255,0.75);
+    backdrop-filter:blur(5px);
+
+    padding:15px 25px;
+    border-radius:20px;
+
+    color:#003366;
+    text-align:center;
+
+    min-width:120px;
+
+    font-size:1.5vw;
     font-weight:600;
+    line-height:1.5;
 }
+
 .container{
     display:flex;
     flex-direction:column;
@@ -255,13 +261,16 @@ async function loadWeather(){
 
     for(let i=0;i<3;i++){
         html += `
-            <div class="weather-day">
-                ${labels[i]} ${icon(data.daily.weather_code[i])}<br>
-                ${data.daily.temperature_2m_max[i]}℃
-                /
-                ${data.daily.temperature_2m_min[i]}℃
-            </div>
-        `;
+    <div class="weather-day">
+        <div>${labels[i]}</div>
+        <div style="font-size:2.5vw;">${icon(data.daily.weather_code[i])}</div>
+        <div>
+            ${Math.round(data.daily.temperature_2m_max[i])}℃
+            /
+            ${Math.round(data.daily.temperature_2m_min[i])}℃
+        </div>
+    </div>
+`;
     }
 
     document.getElementById("weather").innerHTML = html;
